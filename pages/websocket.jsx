@@ -45,10 +45,6 @@ const WebSocketPage = () => {
   const makeNewCandle = useRef(false);
 
   useEffect(() => {
-    console.log(
-      process.env.NEXT_PUBLIC_ENV_VARIABLE,
-      "<<<<---------------BINANCE_KEY"
-    );
     const streamName = "/ethusdt@kline_1m";
     const socket = new WebSocket(
       process.env.NEXT_PUBLIC_ENV_VARIABLE + streamName
