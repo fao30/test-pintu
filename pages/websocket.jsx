@@ -141,7 +141,6 @@ const WebSocketPage = () => {
     const socket = new WebSocket(
       "wss://stream.binance.com:443/ws/" + streamName
     );
-    // const socket = new WebSocket(process.env.REACT_BINANCE_KEY + streamName);
 
     socket.onopen = () => {
       console.log("WebSocket connection opened");
@@ -159,35 +158,34 @@ const WebSocketPage = () => {
       console.log("WebSocket connection closed");
     };
 
-    // Cleanup the WebSocket connection when the component unmounts
     return () => {
       socket.close();
     };
   }, []);
 
   return (
-    <div className="flex w-full">
-      <div className="py-5 flex flex-col md:flex-row">
-        <ReactApexChart
-          options={time.options}
-          series={time.series}
-          type="candlestick"
-          height={450}
-          width={850}
-        />
-        <OrderBook
-          layout="row"
-          listLength={18}
-          showHeaders
-          applyBackgroundColor
-          showSpread={false}
-          book={askBid}
-        />
+    <div className="flex w-full h-full flex-col">
+      <div className="flex w-full h-full  justify-center items-center">
+        <div className="py-5 flex flex-col md:flex-row">
+          <ReactApexChart
+            options={time.options}
+            series={time.series}
+            type="candlestick"
+            height={450}
+            width={850}
+          />
+          <OrderBook
+            layout="row"
+            listLength={18}
+            showHeaders
+            applyBackgroundColor
+            showSpread={false}
+            book={askBid}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
 export default WebSocketPage;
-
-//Note: You can replace the `'ws://localhost:8080'` URL and port number with your WebSocket server's URL.
