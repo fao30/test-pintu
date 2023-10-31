@@ -7,6 +7,7 @@ import { DecimalFunction } from "@/helpers/decimalFunctions";
 import HashLoader from "react-spinners/HashLoader";
 
 const WebSocketPage = () => {
+  //
   const [time, setTime] = useState({
     series: [
       {
