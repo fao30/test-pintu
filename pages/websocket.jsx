@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import ReactApexChart from "react-apexcharts";
 import { OrderBook } from "@lab49/react-order-book";
 import { DecimalFunction } from "@/helpers/decimalFunctions";
 import HashLoader from "react-spinners/HashLoader";
+import dynamic from "next/dynamic";
+
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 const WebSocketPage = () => {
-  //
   const [time, setTime] = useState({
     series: [
       {
